@@ -16,15 +16,14 @@ import "OutilsGeneriques.dart";
 
 int main() {
   ansiColorDisabled = false;
-  print(dbz_blanc("------ Modificateur images Buu's Fury et L'Héritage de Goku 2 ------"));
-  print(cyan("fralacticus@gmail.com"));
-  print("");
+  afficher_titre();
   executer();
   return 0;
 }
 
 void executer() {
   ansiColorDisabled = false;
+
   final String horodatage = generer_horodatage();
 
   Parametres.chemin_generated = ".\\export\\generated_$horodatage";
@@ -96,7 +95,7 @@ void executer() {
       exit(-1);
     }
 
-    stdout.write("   - Modifier en-tête fichier compressé en mode WebfootTechnologies ... ");
+    stdout.write("   - Modifie en-tête fichier compressé en mode WebfootTechnologies ... ");
     mettre_entete_en_webfoot(chemin_image_comp);
     stdout.writeln(vert("OK"));
 
@@ -110,10 +109,9 @@ void executer() {
     stdout.writeln("   - Calcul de l'adresse d'insertion dans rom : ");
     ImageRom infos_image_originale = chercherAdresse(metadonnees.adresse);
     print("      - Pointeur: 0x${infos_image_originale.pointeurs.first.toRadixString(16)}");
-    print("      - Ancienne adresse: 0x${infos_image_originale.adresse.toRadixString(16)}");
-    print("      - Nouvelle adresse: 0x${adresse_insertion.toRadixString(16)}");
+    print("      - Adresse: 0x${infos_image_originale.adresse.toRadixString(16)} -> 0x${adresse_insertion.toRadixString(16)}");
 
-    stdout.write("   - Insertion dans la rom de l'image... ");
+    stdout.write("   - Insertion dans la rom de l'image ... ");
     rom.setAll(adresse_insertion, image_comp);
     stdout.writeln(vert("OK"));
 

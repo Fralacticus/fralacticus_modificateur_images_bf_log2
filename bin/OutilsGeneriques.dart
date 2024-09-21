@@ -103,8 +103,5 @@ void creerDossier(String cheminDossier) {
   // Vérifier si le dossier existe, sinon le créer
   if (!dossier.existsSync()) {
     dossier.createSync(recursive: true);
-    print('Le dossier $cheminDossier a été créé.');
-  } else {
-    print('Le dossier $cheminDossier existe déjà.');
   }
 }

@@ -42,3 +42,8 @@ the following two criteria are met:
 (b). Show notification of JCALG1's usage in your program or
 program documentation along with a link to the authors
 webpage.
+
+### Licence - monkey_face_flat.svg
+- Auteur : Microsoft
+- Site : www.figma.com/@microsoft
+- Licence: CC BY 4.0

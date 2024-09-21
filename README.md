@@ -1,1 +1,2 @@
-A sample command-line application providing basic argument parsing with an entrypoint in `bin/`.
+# Fralacticus - Modificateur d'images des jeux GBA Buu's Fury et Legacy of Goku 2
+
