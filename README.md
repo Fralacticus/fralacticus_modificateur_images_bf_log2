@@ -20,8 +20,10 @@ Ce logiciel est un outil automatisé permettant de réinsérer des fichiers .bmp
 
 5. **Modification des images `.bmp`** : Les fichiers `.bmp` extraits peuvent être modifiés avec un logiciel d'édition d'images tel que **Photoshop**. Il est important de **conserver le mode indexé** et de **respecter les couleurs de la palette originale**. N'apportez aucune modification au nom des fichiers .bmp.
 
-6. **Placement des images `.bmp` modifiées** : Placez les fichiers `.bmp` modifiés, sans les renommer, dans le dossier **source_images**.
+6. **Placement des images `.bmp` modifiées** : Placez les fichiers `.bmp` modifiés, **sans les renommer**, dans le dossier **source_images**.
 
 7. **Exécution** : Lancez `fralacticus_modificateur_images_bf_log2.exe` pour réinsérer automatiquement les fichiers `.bmp` modifiés.
 
-   Le logiciel génère une copie modifiée de la rom dans le dossier **export\generated_**, en ajoutant un horodatage au dossier et au nom du fichier
+   Le logiciel génère une copie modifiée de la rom dans le dossier **export\generated_**, en ajoutant un horodatage au dossier et au nom du fichier.
+   
+>💡 **Avantage** : Ce mode de fonctionnement permet de préserver la rom source intacte. Vous pouvez exécuter le programme autant de fois que nécessaire, tester différentes modifications, et toujours repartir de la rom originale. Cela évite de corrompre la rom d'origine par accident et permet une flexibilité maximale lors des modifications répétées.
