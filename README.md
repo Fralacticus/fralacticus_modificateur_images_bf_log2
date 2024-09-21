@@ -14,14 +14,18 @@ Ce logiciel est un outil automatisé permettant de réinsérer des fichiers .bmp
 
 2. **Téléchargement du logiciel** : Clonez ou télécharger ce dépôt sur votre ordinateur.
 
-3. **Placement de la rom `.gba`** : Placer la rom `.gba`  originale (nommez-la à votre guise) dans le dossier **source_rom**. 
+3. **Placement de la rom `.gba`** : Placer la rom *.gba* originale (nommez-la à votre guise) dans le dossier **source_rom**. 
 
-4. **Placement du fichier `.json`** : Copiez le fichier `infos.json` généré dans le dossier **source_infos**.
+4. **Placement du fichier `.json`** : Copiez le fichier *infos.json* généré dans le dossier **source_infos**.
 
-5. **Modification des images `.bmp`** : Les fichiers `.bmp` extraits peuvent être modifiés avec un logiciel d'édition d'images tel que **Photoshop**. Il est important de **conserver le mode indexé** et de **respecter les couleurs de la palette originale**.   
-> ⚠️ **Warning** : Ne renommez pas les fichiers .bmp.
+5. **Modification des images `.bmp`** : Les .bmp extraits peuvent être modifiés avec un logiciel d'édition d'images tel que **Photoshop**.
+> ⚠️ **Règles à respecter** :
+>
+> - Conservez le mode indexé**
+> - Utilisez uniquement les couleurs de la palette originale
+> - Ne renommez pas les fichiers *.bmp*
 
-6. **Placement des images `.bmp` modifiées** : Placez les fichiers `.bmp` modifiés, sans les renommer, dans le dossier **source_images**.
+6. **Placement des images `.bmp` modifiées** : Placez les fichiers .*bmp* modifiés, sans les renommer, dans le dossier **source_images**.
 
 7. **Exécution** : Lancez `fralacticus_modificateur_images_bf_log2.exe` pour réinsérer automatiquement les fichiers `.bmp` modifiés.
 
@@ -34,7 +38,7 @@ Ce mode de fonctionnement permet de **préserver la rom source intacte**. Vous p
 
 - Ce projet est sous licence zlib. Consulter le fichier [LICENSE](LICENSE.md) pour plus de détails.
 
-- Ce fichier inclut également les licences des autres ressources utiliséest.
+- Ce fichier inclut également les licences des autres ressources utilisées.
 
   
 
