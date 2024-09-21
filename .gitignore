@@ -17,5 +17,9 @@ pubspec.lock
 test/
 export/
 source_images/*
+!source_images/.gitkeep
+
 source_infos/*
+!source_infos/.gitkeep
 source_rom/*
+!source_rom/.gitkeep
