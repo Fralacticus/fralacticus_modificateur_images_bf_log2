@@ -1,7 +1,7 @@
 ### Licence - fralacticus_modificateur_images_bf_log2
 - Auteur : Fralacticus
 - Site officiel : www.fralacticus.fr
-- Dépôt Github : www.github.com/fralacticus/fralacticus-chercheur-image
+- Dépôt Github : https://github.com/Fralacticus/fralacticus_modificateur_images_bf_log2
 - Licence zlib :
 
 Copyright (C) 2024 Fralacticus (fralacticus@gmail.com)
