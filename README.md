@@ -12,7 +12,7 @@ Ce logiciel est un outil automatisé permettant de réinsérer des fichiers .bmp
 
 1. **Extraction des images** : Utilisez le logiciel [fralacticus-chercheur-image](https://github.com/Fralacticus/fralacticus-chercheur-image) pour extraire les fichiers **.bmp** et générer le fichier **infos.json**. 
 
-2. **Téléchargement du logiciel** : Clonez ou télécharger ce dépôt sur votre ordinateur.
+2. **Téléchargement du logiciel** : Clonez ou télécharger ce dépôt (fralacticus_modificateur_images_bf) sur votre ordinateur.
 
 3. **Placement de la rom `.gba`** : Placer la rom *.gba* originale (nommez-la à votre guise) dans le dossier **source_rom**. 
 
