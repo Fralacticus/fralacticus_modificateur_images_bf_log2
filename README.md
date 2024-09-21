@@ -21,7 +21,7 @@ Ce logiciel est un outil automatisé permettant de réinsérer des fichiers .bmp
 5. **Modification des images `.bmp`** : Les .bmp extraits peuvent être modifiés avec un logiciel d'édition d'images tel que **Photoshop**.
 > ⚠️ **Règles à respecter** :
 >
-> - Conservez le mode indexé**
+> - Conservez le mode indexé
 > - Utilisez uniquement les couleurs de la palette originale
 > - Ne renommez pas les fichiers *.bmp*
 
