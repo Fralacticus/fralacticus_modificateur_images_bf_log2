@@ -111,6 +111,7 @@ void executer() {
     print("      - Pointeurs: ${toHexList(infos_image_originale.pointeurs)}");
     print("      - Adresse: 0x${infos_image_originale.adresse.toRadixString(16)} -> 0x${adresse_insertion.toRadixString(16)}");
 
+
     stdout.write("   - Insertion dans la rom de l'image ... ");
     rom.setAll(adresse_insertion, image_comp);
     stdout.writeln(vert("OK"));
@@ -119,6 +120,8 @@ void executer() {
     List<int> contenu_pointeur = GenererPointeur(adresse_insertion);
     for(int pointeur in infos_image_originale.pointeurs) {
       rom.setAll(pointeur, contenu_pointeur);
+      rom.setAll(pointeur - 6 , [metadonnees.largeur]);
+      rom.setAll(pointeur - 5 , [metadonnees.hauteur]);
     }
 
     stdout.writeln(vert("OK"));
