@@ -106,18 +106,21 @@ void executer() {
     stdout.writeln(vert("OK"));
 
 
-    stdout.writeln("   - Calcul de l'adresse d'insertion dans rom : ");
+    stdout.writeln("   - Calcul de l'adresse d'insertion dans rom :");
     ImageRom infos_image_originale = chercherAdresse(metadonnees.adresse);
-    print("      - Pointeur: 0x${infos_image_originale.pointeurs.first.toRadixString(16)}");
+    print("      - Pointeurs: ${toHexList(infos_image_originale.pointeurs)}");
     print("      - Adresse: 0x${infos_image_originale.adresse.toRadixString(16)} -> 0x${adresse_insertion.toRadixString(16)}");
 
     stdout.write("   - Insertion dans la rom de l'image ... ");
     rom.setAll(adresse_insertion, image_comp);
     stdout.writeln(vert("OK"));
 
-    stdout.write("   - Modification dans la rom du pointeur ... ");
+    stdout.write("   - Modification dans la rom des pointeurs ... ");
     List<int> contenu_pointeur = GenererPointeur(adresse_insertion);
-    rom.setAll(infos_image_originale.pointeurs.first, contenu_pointeur);
+    for(int pointeur in infos_image_originale.pointeurs) {
+      rom.setAll(pointeur, contenu_pointeur);
+    }
+
     stdout.writeln(vert("OK"));
 
     // Calcul prochaine adresse

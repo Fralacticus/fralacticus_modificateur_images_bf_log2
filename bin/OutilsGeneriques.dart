@@ -33,7 +33,7 @@ int octetsToInt(List<int> octets) {
   return res;
 }
 
-List<String> toHexList(List<int> entree, {int nbPad = 2}) => entree.map((e) => e.toRadixString(16).padLeft(nbPad,'0').toUpperCase()).toList();
+List<String> toHexList(List<int> entree, {int nbPad = 2}) => entree.map((e) => "0x" + e.toRadixString(16).padLeft(nbPad,'0').toUpperCase()).toList();
 
 bool egaliteListes(List<List<int>> listes){
   // Verifier longueurs
