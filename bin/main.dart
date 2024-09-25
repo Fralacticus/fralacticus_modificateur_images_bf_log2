@@ -120,8 +120,10 @@ void executer() {
     List<int> contenu_pointeur = GenererPointeur(adresse_insertion);
     for(int pointeur in infos_image_originale.pointeurs) {
       rom.setAll(pointeur, contenu_pointeur);
-      rom.setAll(pointeur - 6 , [metadonnees.largeur]);
-      rom.setAll(pointeur - 5 , [metadonnees.hauteur]);
+      if(metadonnees.largeur <= 64) { // pour verifier si sprite
+        rom.setAll(pointeur - 6 , [metadonnees.largeur]);
+        rom.setAll(pointeur - 5 , [metadonnees.hauteur]);
+      }
     }
 
     stdout.writeln(vert("OK"));
