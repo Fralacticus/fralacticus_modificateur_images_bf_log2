@@ -215,3 +215,16 @@ ProcessResult compresserJcalg1(String chemin_jcalg1, String cheminEntree, String
   ProcessResult result = Process.runSync(chemin_jcalg1, ['c9', cheminEntree, cheminSortie],  runInShell: false, stdoutEncoding:Utf8Codec(), stderrEncoding: Utf8Codec());
   return result;
 }
+
+int calculer_premier_adresse_libre(List<int> rom) {
+  int index = rom.length - 1;
+
+  while (index >= 0 && rom[index] == 0xff) {
+    index--;
+  }
+  index += 1;
+
+  index = index + 32 - (index % 32);
+
+  return index;
+}

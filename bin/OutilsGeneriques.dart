@@ -105,3 +105,22 @@ void creerDossier(String cheminDossier) {
     dossier.createSync(recursive: true);
   }
 }
+
+void agrandirListe(List<int> liste, int nouvelleTaille, int valeurDeRemplissage) {
+  if (nouvelleTaille <= liste.length) {
+    throw ArgumentError('La nouvelle taille doit être supérieure à la taille actuelle de la liste.');
+  }
+  int nombreDElementsAAjouter = nouvelleTaille - liste.length;
+
+  liste.addAll(List<int>.filled(nombreDElementsAAjouter, valeurDeRemplissage));
+}
+
+int convertMoToOctets(int mo) {
+  const int octetsParMo = 1024 * 1024;
+  return mo * octetsParMo;
+}
+
+int convertOctetsToMo(int octets) {
+  const int octetsParMo = 1024 * 1024;
+  return octets ~/ octetsParMo;
+}

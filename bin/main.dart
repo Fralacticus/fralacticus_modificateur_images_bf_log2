@@ -33,14 +33,16 @@ void executer() {
   creerDossier(Parametres.chemin_generated_temp);
 
   List<String> liste_chemins_fichier_bitmap = lister_fichiers_bitmap(Parametres.chemin_dossier_source_images);
-  print(bleu("- Liste des fichiers bitmap dans ${Parametres.chemin_dossier_source_images} qui seront insérés dans la rom : "));
+  print(bleu("- Liste des ${liste_chemins_fichier_bitmap.length} fichiers bitmap dans ${Parametres.chemin_dossier_source_images} qui seront insérés dans la rom : "));
   for (var fichier in liste_chemins_fichier_bitmap) {
     print("   - ${path.basename(fichier)}");
   }
 
   String chemin_fichier_rom = obtenir_fichier_rom(Parametres.chemin_dossier_source_rom);
   stdout.write(bleu("- Lecture de la rom source $chemin_fichier_rom ... "));
-  List<int> rom = File(chemin_fichier_rom).readAsBytesSync();
+  List<int> rom = List<int>.from(File(chemin_fichier_rom).readAsBytesSync());
+  int taille_rom_octets = rom.length;
+  int taille_rom_mo = convertOctetsToMo(taille_rom_octets);
   stdout.writeln(vert("OK"));
 
   String chemin_fichier_infos = obtenir_fichier_infos(Parametres.chemin_dossier_infos);
@@ -51,10 +53,12 @@ void executer() {
   Global.listeMap = List<MapSize>.from(json["infos"].map((e)=> MapSize.fromJson(e)));
   stdout.writeln(vert("OK"));
 
+  stdout.write(bleu("- Première adresse d'insertion : "));
+  int adresse_insertion = calculer_premier_adresse_libre(rom);
+  print("0x${adresse_insertion.toRadixString(16)}");
 
   print(bleu("\n- Traitement des fichiers bitmaps :"));
   int i = 1;
-  int adresse_insertion = 0x7B89C0;
   for(String chemin_fichier_bitmap in liste_chemins_fichier_bitmap) {
     String bitmap_base_name = path.basename(chemin_fichier_bitmap);
     String base_name_sans_extension = path.basenameWithoutExtension(chemin_fichier_bitmap);
@@ -106,11 +110,24 @@ void executer() {
     stdout.writeln(vert("OK"));
 
 
-    stdout.writeln("   - Calcul de l'adresse d'insertion dans rom :");
+    stdout.writeln("   - Adresse d'insertion dans rom :");
     ImageRom infos_image_originale = chercherAdresse(metadonnees.adresse);
     print("      - Pointeurs: ${toHexList(infos_image_originale.pointeurs)}");
     print("      - Adresse: 0x${infos_image_originale.adresse.toRadixString(16)} -> 0x${adresse_insertion.toRadixString(16)}");
 
+
+    if(adresse_insertion + image_comp.length > taille_rom_octets) {
+      stdout.write("   - Tentative d'agrandissement de la rom : $taille_rom_mo ");
+      taille_rom_mo *= 2;
+      stdout.write("-> $taille_rom_mo Mo ... ");
+      if(taille_rom_mo > 32) {
+        stdout.write(rouge(" NOK, elle a déjà la taille max de 32Mo"));
+        exit(-1);
+      }
+      taille_rom_octets = convertMoToOctets(taille_rom_mo);
+      agrandirListe(rom, taille_rom_octets, 0xFF);
+      stdout.writeln(vert("OK"));
+    }
 
     stdout.write("   - Insertion dans la rom de l'image ... ");
     rom.setAll(adresse_insertion, image_comp);
@@ -125,7 +142,6 @@ void executer() {
         rom.setAll(pointeur - 5 , [metadonnees.hauteur]);
       }
     }
-
     stdout.writeln(vert("OK"));
 
     // Calcul prochaine adresse
@@ -136,7 +152,7 @@ void executer() {
     i+=1;
   }
 
-  stdout.writeln(bleu("\n- Écriture de la rom modifiée dans ${Parametres.chemin_generated} : "));
+  stdout.writeln(bleu("\n- Écriture de la rom modifiée ($taille_rom_mo Mo) dans ${Parametres.chemin_generated} : "));
   String chemin_rom_modifee = path.join(Parametres.chemin_generated, "${path.basenameWithoutExtension(chemin_fichier_rom)}_$horodatage.gba");
   stdout.write("   ${path.basename(chemin_rom_modifee)} ... ");
   File(chemin_rom_modifee).writeAsBytesSync(rom);
