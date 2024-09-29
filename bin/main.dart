@@ -96,6 +96,7 @@ void executer() {
       stdout.writeln(rouge("NOK"));
       stdout.writeln(rouge(process_result.stdout));
       stdout.writeln(rouge(process_result.stderr));
+      stdin.readLineSync();
       exit(-1);
     }
 
@@ -122,6 +123,7 @@ void executer() {
       stdout.write("-> $taille_rom_mo Mo ... ");
       if(taille_rom_mo > 32) {
         stdout.write(rouge(" NOK, elle a déjà la taille max de 32Mo"));
+        stdin.readLineSync();
         exit(-1);
       }
       taille_rom_octets = convertMoToOctets(taille_rom_mo);

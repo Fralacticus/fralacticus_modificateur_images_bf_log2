@@ -35,7 +35,8 @@ class Convertisseur {
       bitmap_indexes = bitmap_indexes.sublist(0, sizeOfPixelArray);
     }
     else if(sizeOfPixelArray > bitmap_indexes.length) {
-      print("ATRAITER");
+      print("ERREUR: Taille bitmap inferieur a son nom");
+      stdin.readLineSync();
       exit(-1);
     }
 
@@ -70,7 +71,8 @@ class Convertisseur {
       bitmap_indexes = bitmap_indexes.sublist(0, sizeOfPixelArray);
     }
     else if(sizeOfPixelArray > bitmap_indexes.length) {
-      print("ATRAITER");
+      print("ERREUR: Taille bitmap inferieur a son nom");
+      stdin.readLineSync();
       exit(-1);
     }
 
