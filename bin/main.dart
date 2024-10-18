@@ -118,7 +118,7 @@ void executer() {
 
 
     if(adresse_insertion + image_comp.length > taille_rom_octets) {
-      stdout.write("   - Tentative d'agrandissement de la rom : $taille_rom_mo ");
+      stdout.write(dbz_blanc("   - Tentative d'agrandissement de la rom : $taille_rom_mo "));
       taille_rom_mo *= 2;
       stdout.write("-> $taille_rom_mo Mo ... ");
       if(taille_rom_mo > 32) {
@@ -139,10 +139,6 @@ void executer() {
     List<int> contenu_pointeur = GenererPointeur(adresse_insertion);
     for(int pointeur in infos_image_originale.pointeurs) {
       rom.setAll(pointeur, contenu_pointeur);
-      if(metadonnees.largeur <= 64) { // pour verifier si sprite
-        rom.setAll(pointeur - 6 , [metadonnees.largeur]);
-        rom.setAll(pointeur - 5 , [metadonnees.hauteur]);
-      }
     }
     stdout.writeln(vert("OK"));
 
