@@ -16,6 +16,7 @@ AnsiPen turquoise = AnsiPen()..xterm(110);
 AnsiPen orange = AnsiPen()..xterm(202);
 AnsiPen dbz = AnsiPen()..blue(bold: true)..xterm(202, bg:true);
 AnsiPen dbz_blanc = AnsiPen()..white(bold: true)..xterm(202, bg:true);
+AnsiPen erreur_fin = AnsiPen()..red(bold: true)..xterm(15, bg:true);
 AnsiPen cyan = AnsiPen()..cyan(bold: true);
 
 void afficher_titre() {

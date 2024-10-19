@@ -7,6 +7,7 @@ import "dart:convert";
 import "dart:io";
 import 'package:ansicolor/ansicolor.dart';
 import "package:path/path.dart" as path;
+import 'package:stack_trace/stack_trace.dart' as trace;
 
 import "Metadonnees.dart";
 import "Convertisseur.dart";
@@ -15,9 +16,21 @@ import "OutilsDedies.dart";
 import "OutilsGeneriques.dart";
 
 int main() {
-  ansiColorDisabled = false;
-  afficher_titre();
-  executer();
+  try {
+    ansiColorDisabled = false;
+    afficher_titre();
+    executer();
+  }
+  catch (e, stacktrace) {
+    stderr.writeln(rouge("\n => ERREUR: "));
+    stderr.writeln(e);
+    stderr.writeln(rouge("\n => TRACE DE L'APPEL DE PILE: "));
+    stderr.writeln(trace.Trace.from(stacktrace));
+
+    stderr.writeln(erreur_fin("Appuyez sur Entrée pour fermer la console..."));
+    stdin.readLineSync();
+    return 255;
+  }
   return 0;
 }
 
